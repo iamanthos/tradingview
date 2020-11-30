@@ -14,6 +14,7 @@ const Chart = () => {
 
     // console.log('OHLC', ohlc)
     // console.log('VOLUME', volume)
+    console.log('Data', data)
 
     useEffect(()=> {
       getFiveMinData().then(res => setOhlc(res.data.map(arr => (
@@ -28,14 +29,14 @@ const Chart = () => {
       getFiveMinData().then(res => setVolume(res.data.map(arr => (
         [new Date(arr.date).getTime(),
           arr.volume])))
-    )
-    getFiveMinData().then(res => setData(res.data.map(arr => (
-      [new Date(arr.date).getTime(),
-      arr.open,
-      arr.high,
-      arr.low,
-      arr.close]
-    )))
+      )
+      getFiveMinData().then(res => setData(res.data.map(arr => (
+        [new Date(arr.date).getTime(),
+        arr.open,
+        arr.high,
+        arr.low,
+        arr.close]
+      )).reverse())
   )
     },[]);
 

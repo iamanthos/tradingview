@@ -5,7 +5,7 @@ import HighchartsReact from "highcharts-react-official";
 
 const Candlestick = ({ ohlc, volume, data}) => {
 
-  console.log('CandlestickData', JSON.stringify(data));
+  // console.log('CandlestickData', JSON.stringify(data));
 
     const randomData = [
       [1317888000000,372.5101,375,372.2,372.52],
@@ -3364,6 +3364,20 @@ const Candlestick = ({ ohlc, volume, data}) => {
       title: {
           text: 'AAPL stock price by minute'
       },
+      chart: {
+        backgroundColor: '#000',
+      },
+      plotOptions: {
+         candlestick: {
+          color: 'red',
+          upColor: 'green',
+          lineColor: 'red',
+          upLineColor: 'green'
+          }
+      },
+      areaRange: {
+          color: '#000'
+      },
       rangeSelector: {
           buttons: [{
               type: 'hour',
@@ -3388,7 +3402,18 @@ const Candlestick = ({ ohlc, volume, data}) => {
           data: data,
           tooltip: {
               valueDecimals: 2
-          }
+          },
+          dataGrouping: {
+            units: [
+                [
+                    'week', // unit name
+                    [1] // allowed multiples
+                ], [
+                    'month',
+                    [1, 2, 3, 4, 6]
+                ]
+            ]
+        }
       }]
   }
 
